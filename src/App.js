@@ -88,19 +88,11 @@ function App() {
             id="sort"
             onChange={(e) => setSortFilter(e.target.value)}
             className="mr-rt-1"
+            value={sortFilter}
           >
-            <option value="joined" selected={sortFilter === "joined"}>
-              Joined
-            </option>
-            <option value="followers" selected={sortFilter === "followers"}>
-              Most Followers
-            </option>
-            <option
-              value="repositories"
-              selected={sortFilter === "repositories"}
-            >
-              Most Repositories
-            </option>
+            <option value="joined">Joined</option>
+            <option value="followers">Most Followers</option>
+            <option value="repositories">Most Repositories</option>
           </select>
           <div className="user--container">
             {userData.map((user) => (
