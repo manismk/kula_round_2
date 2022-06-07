@@ -2,8 +2,9 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { UserCard } from "./component/UserCard";
 
-const getUrl = (location, technology, sort = "joined") => {
-  return `https://api.github.com/search/users?q=type:user&sort:"${sort}"+language:%22${technology}%22+location:%22${location}%22&page=1`;
+const getUrl = (location, technology, sort = "followers") => {
+  return `https://api.github.com/search/users?q=type:user+language:${technology}+location:${location}
+   &sort=${sort}&page=1`;
 };
 
 function App() {
@@ -12,10 +13,10 @@ function App() {
   const [error, setError] = useState("");
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [sortFilter, setSortFilter] = useState("");
+  const [sortFilter, setSortFilter] = useState("followers");
 
   useEffect(() => {
-    if (sortFilter !== "") {
+    if (location.length > 0 && technology.length > 0) {
       (async () => {
         setLoading(true);
         try {
